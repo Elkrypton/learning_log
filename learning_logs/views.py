@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-	return render(request,'learning_logs/templates/index.html')
+	return render(request,'/app/learning_log/learning_logs/templates/index.html')
 
 @login_required
 def topics(request):
