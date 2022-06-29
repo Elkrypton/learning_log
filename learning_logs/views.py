@@ -15,7 +15,7 @@ def topics(request):
     """Show All Topics"""
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')
     context = {'topics':topics}
-    return render(request,'learning_logs/templates/topics.html',context)
+    return render(request,'/app/learning_log/learning_logs/templates/topics.html',context)
 
 @login_required
 def topic(request, topic_id):
@@ -25,7 +25,7 @@ def topic(request, topic_id):
         raise Http404
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic':topic,'entries':entries}
-    return render(request,'learning_logs/templates/topic.html',context)
+    return render(request,'/app/learning_log/learning_logs/templates/topic.html',context)
 
 
 @login_required
@@ -43,7 +43,7 @@ def new_topic(request):
             new_topic.save()
             return HttpResponseRedirect(reverse("learning_logs:topics"))
     context = {'form':form}
-    return render(request,"learning_logs/templates/new_topic.html",context)
+    return render(request,"/app/learning_log/learning_logs/templates/new_topic.html",context)
 
 @login_required
 def new_entry(request,topic_id):
@@ -63,7 +63,7 @@ def new_entry(request,topic_id):
             return HttpResponseRedirect(reverse("learning_logs:topic", args=[topic_id]))
 
     context = {'topic':topic,'form':form}
-    return render(request,'learning_logs/templates/templates/new_entry.html',context)
+    return render(request,'/app/learning_log/learning_logs/templates/new_entry.html',context)
 
 
 @login_required
@@ -82,4 +82,4 @@ def edit_entry(request,entry_id):
             return HttpResponseRedirect(reverse('learning_logs:topic',args=[topic.id]))
 
     context = {'entry':entry,'topic':topic,'form':form}
-    return render(request,'learning_logs/templates/edit_entry.html', context)
+    return render(request,'/app/learning_log/learning_logs/templates/edit_entry.html', context)
