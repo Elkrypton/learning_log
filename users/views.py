@@ -23,4 +23,4 @@ def register(request):
             return HttpResponseRedirect(reverse("learning_logs:index"))
 
     context = {'form':form}
-    return render(request,'/home/mr/Desktop/projects/root_folder/learning_log/users/templates/register.html',context)
+    return render(request,'templates/register.html',context)
