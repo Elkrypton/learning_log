@@ -7,7 +7,7 @@ from . import views
 app_name = "users"
 urlpatterns=[
     
-        path('login/', LoginView.as_view(template_name="/home/mr/Desktop/projects/learning_log/users/templates/login.html"),
+        path('login/', LoginView.as_view(template_name="login.html"),
             name="login"),
 
         path('logout/',views.logout_view, name="logout"),
